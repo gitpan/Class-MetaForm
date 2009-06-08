@@ -24,5 +24,11 @@ sub stringify {
   return $self->message;
 }
 
+sub simple_message {
+  my ($self) = @_;
+
+  return "An unknown error occured";
+}
+
 1;
 

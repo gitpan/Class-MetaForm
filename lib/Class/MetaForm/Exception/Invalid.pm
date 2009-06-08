@@ -21,5 +21,11 @@ sub _build_reason {
   return $reason;
 }
 
+sub simple_message {
+  my ($self) = @_;
+
+  return $self->field_name . " is invalid: " . $self->reason;
+}
+
 1;
 

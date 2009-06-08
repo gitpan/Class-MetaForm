@@ -19,10 +19,11 @@ no_index:
     - inc
     - t
 requires:
+  Class::MOP: 0.84
   Moose: 0.79
   MooseX::MetaDescription: 0.03
   aliased: 0
   namespace::autoclean: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01_01
+version: 0.01_02

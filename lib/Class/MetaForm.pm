@@ -8,7 +8,7 @@ use Moose::Util::TypeConstraints qw/coerce from via/;
 
 use namespace::autoclean;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 Moose::Exporter->setup_import_methods;
 
@@ -23,6 +23,7 @@ sub init_meta {
 
   Moose::Util::MetaRole::apply_metaclass_roles (
     for_class                 => $for_class,
+    metaclass_roles           => [ 'Class::MetaForm::Meta::Class::Trait' ],
     attribute_metaclass_roles => [ 'MooseX::MetaDescription::Meta::Trait' ],
   ); 
 
@@ -77,12 +78,12 @@ This is a development version, treat it as such
     required => 1,
   );
 
-# In a controller far, far away
+  # In a controller far, far away
 
-my $form = My::ContactForm->new ($c->req->params);
+  my $form = My::ContactForm->new ($c->req->params);
 
-# By the way, see Catalyst::Controller::MetaForm for more sugaring
-# when using MetaForm with Catalyst.
+  # By the way, see Catalyst::Controller::MetaForm for more sugaring
+  # when using MetaForm with Catalyst.
 
 =head1 DESCRIPTION
 
@@ -113,6 +114,12 @@ It also converts an argument like:
 Into:
 
   foo => { bar => 42 }
+
+=head2 Attribute ordering
+
+A trait is added to the class in order to make attribute
+initialization done in the same order that attributes were added to
+the class.
 
 =head2 Exceptions
 

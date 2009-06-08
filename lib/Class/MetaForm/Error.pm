@@ -41,8 +41,6 @@ sub _resolve_field_label {
     if (my $label = $attribute->description->{ label }) {
       return $label;
     }
-  } else {
-    die;
   }
 
   return $field;
